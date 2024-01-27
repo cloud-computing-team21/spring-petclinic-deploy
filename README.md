@@ -87,10 +87,18 @@ http://amcdocker.costaisa.org:9966/petclinic
 
 ## Levantamos el Frontend.
 
-Arrancamos el frontend
+Configuramos el fichero **/config/petclinic-angular/environment.js** a nuestro gusto. Los valores por defecto son
 
 ````
-docker run -it -d --name petclinic-angular --restart=always -p 8080:8080 jbravo/spring-petclinic-angular:0.1.0
+const env = {
+  REST_API_URL: 'http://amcdocker.costaisa.org:9966/petclinic/api/'	
+};
+````
+
+Arrancamos el frontend, al volumen donde tenemos la configuarión.
+
+````
+docker run -it -d --name petclinic-angular-prueba -v ${PWD}/config/petclinic-angular/environment.js:/usr/share/nginx/html/assets/environments/environment.js --restart=always -p 8080:8080 jbravo/spring-petclinic-angular:0.2.0
 ````
 
 Ya estamos en condiciones de acceder por URL a la definición del API:
