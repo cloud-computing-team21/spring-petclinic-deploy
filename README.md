@@ -58,6 +58,8 @@ Configuramos el fichero **<entorno>/config/petclinic-rest/petclinic-rest.propert
 ````
 spring.profiles.active=postgresql,spring-data-jpa
 spring.datasource.url=jdbc:postgresql://amcdocker.costaisa.org:5432/petclinic
+spring.datasource.username=postgres
+spring.datasource.password=petclinic
 ````
 
 Y a continuación arrancamos la aplicación.
@@ -98,7 +100,7 @@ const env = {
 Arrancamos el frontend, al volumen donde tenemos la configuarión.
 
 ````
-docker run -it -d --name petclinic-angular-prueba -v ${PWD}/config/petclinic-angular/environment.js:/usr/share/nginx/html/assets/environments/environment.js --restart=always -p 8080:8080 jbravo/spring-petclinic-angular:0.2.0
+docker run -it -d --name petclinic-angular -v ${PWD}/config/petclinic-angular/environment.js:/usr/share/nginx/html/assets/environments/environment.js --restart=always -p 8080:8080 jbravo/spring-petclinic-angular:0.2.0
 ````
 
 Ya estamos en condiciones de acceder por URL a la definición del API:
