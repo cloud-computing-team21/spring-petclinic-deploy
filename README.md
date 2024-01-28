@@ -3,7 +3,7 @@
 Clonamos el repositorio git:
 
 ````
-git clone https://github.com/jbravo/spring-petclinic-deploy.git
+https://github.com/cloud-computing-team21/spring-petclinic-deploy.git
 ````
 
 # Entorno
