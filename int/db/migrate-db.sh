@@ -7,8 +7,9 @@ if [ "$#" -ne 1 ]; then
 fi
 
 RDS_HOSTNAME=$1
+SCRIPT_DIR=$(dirname "$0")
 
 # Execute SQL scripts
-psql -h $RDS_HOSTNAME -U postgres -a -f createDB.sql && \
-psql -h $RDS_HOSTNAME -U postgres -a -f initDB.sql -d petclinic && \
-psql -h $RDS_HOSTNAME -U postgres -a -f populateDB.sql -d petclinic
+psql -h $RDS_HOSTNAME -U postgres -a -f "$SCRIPT_DIR/createDB.sql" && \
+psql -h $RDS_HOSTNAME -U postgres -a -f "$SCRIPT_DIR/initDB.sql" -d petclinic && \
+psql -h $RDS_HOSTNAME -U postgres -a -f "$SCRIPT_DIR/populateDB.sql" -d petclinic
