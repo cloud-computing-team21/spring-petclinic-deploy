@@ -67,6 +67,7 @@ Y a continuación arrancamos la aplicación.
 ````
 docker run -it -d --env-file=${PWD}/config/petclinic-rest/petclinic-rest.properties --name petclinic-rest --restart=always -p 9966:9966 jbravo/spring-petclinic-rest:3.2.1
 ````
+
 Miramos los logs
 
 ````
@@ -87,13 +88,13 @@ Ya estamos en condiciones de acceder por URL a la definición del API:
 http://amcdocker.costaisa.org:9966/petclinic
 ````
 
-## Levantamos el Frontend.
+## Levantamos el Frontend
 
 Configuramos el fichero **/config/petclinic-angular/environment.js** a nuestro gusto. Los valores por defecto son
 
 ````
 const env = {
-  REST_API_URL: 'http://amcdocker.costaisa.org:9966/petclinic/api/'	
+  REST_API_URL: 'http://amcdocker.costaisa.org:9966/petclinic/api/' 
 };
 ````
 
@@ -108,3 +109,11 @@ Ya estamos en condiciones de acceder por URL a la definición del API:
 ````
 http://amcdocker.costaisa.org:8080/
 ````
+
+## Script de migración
+
+Ejecutar el script [migrate-db.sh](int/db/migrate-db.sh) con el arn de la BBDD RDS para crear y poblar toda la base de datos:
+
+```bash
+migrate-db.sh rds-master.ctl8bhoer7ou.us-east-1.rds.amazonaws.com
+```
